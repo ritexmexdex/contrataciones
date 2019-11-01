@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Dirección de Licitaciones y Contrataciones</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style type="text/css">
+            #container {
+                min-width: 300px;
+                max-width: 800px;
+                margin: 1em auto;
+                border: 1px solid silver;
+            }
+            #container h4 {
+                text-transform: none;
+                font-size: 14px;
+                font-weight: normal;
+            }
+            #container p {
+                font-size: 13px;
+                line-height: 16px;
+            }
+		</style>
+	</head>
+    <body class="index is-preload">
+            <div id="page-wrapper">
+                <!-- Header -->
+                <header id="header">
+                    <h1 id="logo"><a href="../index.html">DIRECCIÓN DE LICITACIONES Y CONTRATACIONES</a></h1>
+                    <nav id="nav">
+                            <ul>
+                                <li class="current"><a href="../index.html">INICIO</a></li>
+                                <li class="submenu">
+                                    <a href="#">NAVEGACIÓN</a>
+                                    <ul>
+                                            <li><a href="../graficos/estadistica1.htm">Reporte por modalidad</a></li>
+                                            <li><a href="../graficos/estadistica2.htm">Reporte por Dirección Administrativa</a></li>
+                                            <li><a href="../buscar.php">Seguimiento de trámites</a></li>
+                                            <li><a href="../buscaAdjudicacion.php">Adjudicación de procesos</a></li>
+                                            <li><a href="../contact.html">Contactos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="../login.html" class="button primary">INICIAR SESIÓN</a></li>
+                            </ul>
+                        </nav>
+                    </header>
+            </div>
+                
+            <script src="code/highcharts.js"></script>
+            <script src="code/modules/sankey.js"></script>
+            <script src="code/modules/organization.js"></script>
+            <script src="code/modules/exporting.js"></script>
+            <article id="main">
+                <section class="wrapper style4 special container medium">
+                    <div id="container"></div>
+			    </section>
+            </article>
+		    <script type="text/javascript">
+                                Highcharts.chart('container', {
+
+                                    chart: {
+                                        height: 600,
+                                        inverted: true
+                                    },
+                                    title: {
+                                        text: 'Organización'
+                                    },
+                                    series: [{
+                                        type: 'organization',
+                                        name: 'Gobierno Autónomo Municipal de La Paz',
+                                        keys: ['from', 'to'],
+                                        data: [
+                                            ['Secretaría Ejecutiva Municipal', 'Dirección de Licitaciones y Contrataciones'],
+                                            ['Dirección de Licitaciones y Contrataciones', 'Dr. Luis Jemio'],
+                                            ['Dr. Luis Jemio', 'Lic. Heidy Burgoa'],
+                                            ['Dr. Luis Jemio', 'Dra. Adriana Benavidez'],
+                                            ['Lic. Heidy Burgoa', 'Protocolización'],
+                                            ['Lic. Heidy Burgoa', 'Garantías'],
+                                            ['Lic. Heidy Burgoa', 'Archivo'],
+                                            ['Dra. Adriana Benavidez', 'Asesoría Legal'],
+                                            ['Dra. Adriana Benavidez', 'Análisis de Procesos'],
+                                            ['Dra. Adriana Benavidez', 'Infraestructura']
+                                        ],
+                                        levels: [{
+                                            level: 0,
+                                            color: 'silver',
+                                            dataLabels: {
+                                                color: 'black'
+                                            },
+                                            height: 25
+                                        }, {
+                                            level: 1,
+                                            color: 'silver',
+                                            dataLabels: {
+                                                color: 'black'
+                                            },
+                                            height: 25
+                                        }, {
+                                            level: 2,
+                                            color: '#980104'
+                                        }, {
+                                            level: 4,
+                                            color: '#359154'
+                                        }],
+                                        nodes: [{
+                                            id: 'Secretaría Ejecutiva Municipal'
+                                        }, {
+                                            id: 'Dirección de Licitaciones y Contrataciones'
+                                        }, {
+                                            id: 'Dr. Luis Jemio',
+                                            title: 'Dr. Luis Jemio',
+                                            name: 'Director General',
+                                            image: 'https://wp-assets.highcharts.com/www-highcharts-com/blog/wp-content/uploads/2018/11/12131849/Torstein1.jpg'
+                                        }, {
+                                            id: 'Lic. Heidy Burgoa',
+                                            title: 'Lic. Heidy Burgoa',
+                                            name: 'Gestión Documental y Seguimiento',
+                                            column: 4,
+                                            image: 'https://wp-assets.highcharts.com/www-highcharts-com/blog/wp-content/uploads/2018/11/12132313/Anita.jpg',
+                                            layout: 'hanging'
+                                        }, {
+                                            id: 'Dra. Adriana Benavidez',
+                                            title: 'Dra. Adriana Benavidez',
+                                            name: 'Proceso de Contratación',
+                                            column: 4,
+                                            image: 'https://wp-assets.highcharts.com/www-highcharts-com/blog/wp-content/uploads/2018/11/12132314/AnneJorunn.jpg',
+                                            layout: 'hanging'
+                                        }, {
+                                            id: 'Protocolización',
+                                            name: 'Protocolización'
+                                        }, {
+                                            id: 'Garantías',
+                                            name: 'Garantías'
+                                        }, {
+                                            id: 'Archivo',
+                                            name: 'Archivo'
+                                        }, {
+                                            id: 'Asesoría Legal',
+                                            name: 'Asesoría Legal'
+                                        },  {
+                                            id: 'Análisis de Procesos',
+                                            name: 'Análisis de Procesos'
+                                        },{
+                                            id: 'Infraestructura',
+                                            name: 'Infraestructura'
+                                        }],
+                                        colorByPoint: false,
+                                        color: '#007ad0',
+                                        dataLabels: {
+                                            color: 'white'
+                                        },
+                                        borderColor: 'white',
+                                        nodeWidth: 75
+                                    }],
+                                    tooltip: {
+                                        outside: true
+                                    },
+                                    exporting: {
+                                        allowHTML: true,
+                                        sourceWidth: 800,
+                                        sourceHeight: 600
+                                    }
+                                });
+                            </script>
+			<!-- Footer -->
+            <footer id="footer">
+
+                <ul class="icons">
+                    <li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+                </ul>
+
+                <ul class="copyright">
+                    <li>&copy; Gobierno Autónomo Municipal de La Paz</li><li>Diseño: <a href="http://html5up.net">Dirección de Licitaciones y Contrataciones.</a></li>
+                </ul>
+
+            </footer>
+
+    </div>
+    <!-- Scripts -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.dropotron.min.js"></script>
+        <script src="../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../assets/js/browser.min.js"></script>
+        <script src="../assets/js/breakpoints.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+</body>
+</html>

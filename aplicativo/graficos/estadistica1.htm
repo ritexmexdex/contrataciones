@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Dirección de Licitaciones y Contrataciones</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="index is-preload">
+		<div id="page-wrapper">
+			<!-- Header -->
+            <header id="header">
+                <h1 id="logo"><a href="../index.html">DIRECCIÓN DE LICITACIONES Y CONTRATACIONES</a></h1>
+                <nav id="nav">
+						<ul>
+							<li class="current"><a href="../index.html">INICIO</a></li>
+							<li class="submenu">
+								<a href="#">NAVEGACIÓN</a>
+								<ul>
+                                        <li><a href="../graficos/estadistica1.htm">Reporte por modalidad</a></li>
+                                        <li><a href="../graficos/estadistica2.htm">Reporte por Dirección Administrativa</a></li>
+                                        <li><a href="../buscar.php">Seguimiento de trámites</a></li>
+                                        <li><a href="../buscaAdjudicacion.php">Adjudicación de procesos</a></li>
+                                        <li><a href="../contact.html">Contactos</a></li>
+								</ul>
+							</li>
+							<li><a href="../login.html" class="button primary">INICIAR SESIÓN</a></li>
+						</ul>
+					</nav>
+				</header>
+        </div>
+            
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="code/highcharts.js"></script>
+        <script src="code/modules/data.js"></script>
+        <script src="code/modules/drilldown.js"></script>
+        <article id="main">
+            <section class="wrapper style4 special container medium">
+                <div class="box">
+                        <select id="Types" name="Types">
+                            <option value="APOYO NACIONAL A LA PRODUCCIÓN Y EMPLEO">APOYO NACIONAL A LA PRODUCCI&Oacute;N Y EMPLEO</option>                                                                                                               
+                            <option value="APOYO NACIONAL A LA PRODUCCIÓN Y EMPLEO (Hasta 200mil Bolivianos)">APOYO NACIONAL A LA PRODUCCI&Oacute;N Y EMPLEO (Hasta 200mil Bolivianos)</option>                                                                                     
+                            <option value="CON NORMATIVA DEL FINANCIADOR NACIONAL">CON NORMATIVA DEL FINANCIADOR NACIONAL</option>                                                                                                                
+                            <option value="CONTRATACION DIRECTA">CONTRATACI&Oacute;N DIRECTA</option>                                                                                                                                 
+                            <option value="CONTRATACIÓN MENOR">CONTRATACI&Oacute;N MENOR</option>                                                                                                                                    
+                            <option value="CONTRATACION POR EMERGENCIA">CONTRATACI&Oacute;N POR EMERGENCIA</option>                                                                                                                           
+                            <option value="CONTRATACION POR EXCEPCION">CONTRATACI&Oacute;N POR EXCEPCI&Oacute;N</option>                                                                                                                            
+                            <option value="LICITACION PUBLICA INTERNACIONAL">LICITACI&Oacute;N P&Uacute;BLICA INTERNACIONAL</option>                                                                                                                      
+                            <option value="LICITACION PUBLICA NACIONAL">LICITACI&Oacute;N PUBLICA NACIONAL</option>                                                                                                                           
+                        </select>
+                        <p>&nbsp;</p>
+                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                </div>
+			</section>
+        </article>
+		<script type="text/javascript">
+        $("#Types").on("change", function(){
+                    var type = $(this).val(); 
+                    $.ajax({
+                        type: "POST",
+                        url:"http://localhost:8080/api/estadistica01/"+type+"",
+                        data: 0,
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            Highcharts.chart('container', {
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'Número de proceso por Dirección Administrativa'
+                            },
+                            subtitle: {
+                                text: 'Procesos en estado vigente y en archivo'
+                            },
+                            xAxis: {
+                                type: 'category'
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Total'
+                                }
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                series: {
+                                    borderWidth: 0,
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '{point.y:.1f}'
+                                    }
+                                }
+                            },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                            pointFormat: '<span style="color:{point.color}">{point.name}. </span> <b>{point.y:.2f}</b> procesos en total<br/>'
+                        },
+                        series: [
+                            {
+                                name: "DIRECCIÓN ADMINISTRATIVA:",
+                                colorByPoint: true,
+                                data: data
+                            }
+                        ]
+                    });
+                }
+            });
+        });
+        </script>
+			<!-- Footer -->
+            <footer id="footer">
+
+                <ul class="icons">
+                    <li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+                    <li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+                </ul>
+
+                <ul class="copyright">
+                    <li>&copy; Gobierno Autónomo Municipal de La Paz</li><li>Diseño: <a href="http://html5up.net">Dirección de Licitaciones y Contrataciones.</a></li>
+                </ul>
+
+            </footer>
+
+    </div>
+    <!-- Scripts -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/jquery.dropotron.min.js"></script>
+        <script src="../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../assets/js/browser.min.js"></script>
+        <script src="../assets/js/breakpoints.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
